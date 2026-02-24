@@ -11,11 +11,10 @@ import { ThemeToggle } from '../components/ThemeToggle'
 
 export const Home = () => {
   return (
-    <div className="min-h-screen bg-[#f5f3ef] dark:bg-background text-foreground overflow-x-hidden"
->
+    <div className="min-h-screen bg-gradient-to-b from-[#061826] via-[#0A1828] to-[#102B3F] text-[#C6A86B] overflow-x-hidden">
         
  
-        <StarBackground />
+        {/* <StarBackground /> */}
 
         <Navbar />
         
@@ -26,9 +25,10 @@ export const Home = () => {
           <AboutSection />
           <SkillsSection />
           <ContactSection />
+          
         </main>
-        
-        <Footer />
+         <Footer />
+       
         
         </div>
     // Theme Toggle

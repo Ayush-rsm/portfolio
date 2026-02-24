@@ -1,218 +1,3 @@
-// import {
-//   Instagram,
-//   Linkedin,
-//   Mail,
-//   MapPin,
-//   Phone,
-//   Send,
-//   Twitch,
-//   Twitter,
-// } from "lucide-react";
-// import { cn } from "../lib/utils";
-// import { useToast } from "../hooks/use-toast";
-// import { useState } from "react";
-// import emailjs from "@emailjs/browser";
-
-
-// export const ContactSection = () => {
-//   const { toast } = useToast();
-//   const [isSubmitting, setIsSubmitting] = useState(false);
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     setIsSubmitting(true);
-
-//     emailjs
-//       .sendForm(
-//         "service_w3gcdlh",   // <-- replace
-//         "template_c4rw41d",  // <-- replace
-//         e.target,
-//         "090clGLkmamRengCf"    // <-- replace
-//       )
-//       .then(
-//         () => {
-//           toast({
-//             title: "Message sent!",
-//             description: "Thank you for your message. I'll get back to you soon.",
-//           });
-
-//           e.target.reset();
-//           setIsSubmitting(false);
-//         },
-//         (error) => {
-//           toast({
-//             title: "Error",
-//             description: "Something went wrong. Please try again.",
-//           });
-
-//           console.error(error);
-//           setIsSubmitting(false);
-//         }
-//       );
-//   };
-
-
-//   return (
-//     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
-//       <div className="container mx-auto max-w-5xl">
-//         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-//           Get In <span className="text-primary"> Touch</span>
-//         </h2>
-
-//         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-//           Have a project in mind or want to collaborate? Feel free to reach out.
-//           I'm always open to discussing new opportunities.
-//         </p>
-
-//         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-//           <div className="space-y-8">
-//             <h3 className="text-2xl font-semibold mb-6">
-//               {" "}
-//               Contact Information
-//             </h3>
-
-//             <div className="space-y-6 justify-center">
-//               <div className="flex items-start space-x-4">
-//                 <div className="p-3 rounded-full bg-primary/10">
-//                   <Mail className="h-6 w-6 text-primary" />{" "}
-//                 </div>
-//                 <div>
-//                   <h4 className="font-medium"> Email</h4>
-//                   <a
-//                     href="mailto:ayush_c@mt.iitr.ac.in"
-//                     className="text-muted-foreground hover:text-primary transition-colors"
-//                   >
-//                     ayush_c@mt.iitr.ac.in
-//                   </a>
-//                 </div>
-//               </div>
-//               <div className="flex items-start space-x-4">
-//                 <div className="p-3 rounded-full bg-primary/10">
-//                   <Phone className="h-6 w-6 text-primary" />{" "}
-//                 </div>
-//                 <div>
-//                   <h4 className="font-medium"> Phone</h4>
-//                   <a
-//                     href="tel:7800388590"
-//                     className="text-muted-foreground hover:text-primary transition-colors"
-//                   >
-//                     7800388590
-//                   </a>
-//                 </div>
-//               </div>
-//               <div className="flex items-start space-x-4">
-//                 <div className="p-3 rounded-full bg-primary/10">
-//                   <MapPin className="h-6 w-6 text-primary" />{" "}
-//                 </div>
-//                 <div>
-//                   <h4 className="font-medium"> Location</h4>
-//                   <a className="text-muted-foreground hover:text-primary transition-colors">
-//                     Roorkee, Uttrakhand
-//                   </a>
-//                 </div>
-//               </div>
-//             </div>
-
-//             <div className="pt-8">
-//               <h4 className="font-medium mb-4"> Connect With Me</h4>
-//               <div className="flex space-x-4 justify-center">
-//                 <a href="#" target="_blank">
-//                   <Linkedin />
-//                 </a>
-//                 <a href="#" target="_blank">
-//                   <Twitter />
-//                 </a>
-//                 <a href="#" target="_blank">
-//                   <Instagram />
-//                 </a>
-//                 <a href="#" target="_blank">
-//                   <Twitch />
-//                 </a>
-//               </div>
-//             </div>
-//           </div>
-
-//           <div
-//             className="bg-card p-8 rounded-lg shadow-xs"
-//             onSubmit={handleSubmit}
-//           >
-//             <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
-
-//             <form className="space-y-6">
-//               <div>
-//                 <label
-//                   htmlFor="name"
-//                   className="block text-sm font-medium mb-2"
-//                 >
-//                   {" "}
-//                   Your Name
-//                 </label>
-//                 <input
-//                   type="text"
-//                   id="name"
-//                   name="name"
-//                   required
-//                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-//                   placeholder="Ayush rsm..."
-//                 />
-//               </div>
-
-//               <div>
-//                 <label
-//                   htmlFor="email"
-//                   className="block text-sm font-medium mb-2"
-//                 >
-//                   {" "}
-//                   Your Email
-//                 </label>
-//                 <input
-//                   type="email"
-//                   id="email"
-//                   name="email"
-//                   required
-//                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-//                   placeholder="random@gmail.com"
-//                 />
-//               </div>
-
-//               <div>
-//                 <label
-//                   htmlFor="message"
-//                   className="block text-sm font-medium mb-2"
-//                 >
-//                   {" "}
-//                   Your Message
-//                 </label>
-//                 <textarea
-//                   id="message"
-//                   name="message"
-//                   required
-//                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
-//                   placeholder="Hello, I'd like to talk about..."
-//                 />
-//               </div>
-
-//               <button
-//                 type="submit"
-//                 disabled={isSubmitting}
-//                 className={cn(
-//                   "w-full inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-primary text-primary-foreground font-medium shadow-md transition-all duration-300",
-//                   "hover:shadow-lg hover:scale-[1.02]",
-//                   "disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
-//                 )}
-//               >
-//                 {isSubmitting ? "Sending..." : "Send Message"}
-//                 <Send size={16} />
-//               </button>
-
-//             </form>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
 import {
   Instagram,
   Linkedin,
@@ -220,13 +5,13 @@ import {
   MapPin,
   Phone,
   Send,
-  Twitch,
   Twitter,
 } from "lucide-react";
 import { cn } from "../lib/utils";
 import { useToast } from "../hooks/use-toast";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { StarBackground } from "./StarBackground";
 
 export const ContactSection = () => {
   const { toast } = useToast();
@@ -238,10 +23,10 @@ export const ContactSection = () => {
 
     emailjs
       .sendForm(
-        "service_vk9vao8",     // ✅ your service ID
-        "template_c4rw41d",    // ✅ your template ID
+        "service_vk9vao8",
+        "template_c4rw41d",
         e.target,
-        "090clGLkmamRengCf"     // ✅ your public key
+        "090clGLkmamRengCf"
       )
       .then(
         () => {
@@ -250,30 +35,39 @@ export const ContactSection = () => {
             description:
               "Thank you for your message. I'll get back to you soon.",
           });
-
           e.target.reset();
           setIsSubmitting(false);
         },
-        (error) => {
+        () => {
           toast({
             title: "Error",
             description: "Something went wrong. Please try again.",
           });
-
-          console.error(error);
           setIsSubmitting(false);
         }
       );
   };
 
   return (
-    <section id="contact" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
+      <section
+      id="contact"
+      className="py-24 px-4 relative bg-linear-to-b from-[#102B3F] via-[#0A1828] to-[#061826] text-[#C6A86B] select-none"
+    >
+      <StarBackground />
+    
+      {/* Warm Glow */}
+      <div className="absolute bottom-20 right-20 w-[400px] h-[400px] bg-[#FF9933]/10 blur-[120px] rounded-full"></div>
+
+      {/* Cool Glow */}
+      <div className="absolute top-10 left-10 w-[300px] h-[300px] bg-[#178582]/10 blur-[100px] rounded-full"></div>
+
+      <div className="relative container mx-auto max-w-5xl">
+
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Get In <span className="text-primary">Touch</span>
+          Get In <span className="text-[#178582]">Touch</span>
         </h2>
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-[#C6A86B]/70 mb-12 max-w-2xl mx-auto">
           Have a project in mind or want to collaborate? Feel free to reach out.
           I'm always open to discussing new opportunities.
         </p>
@@ -287,15 +81,16 @@ export const ContactSection = () => {
             </h3>
 
             <div className="space-y-6">
+
               <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />
+                <div className="p-3 rounded-full bg-[#178582]/20">
+                  <Mail className="h-6 w-6 text-[#178582]" />
                 </div>
                 <div>
                   <h4 className="font-medium">Email</h4>
                   <a
                     href="mailto:ayush_c@mt.iitr.ac.in"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-[#C6A86B]/70 hover:text-[#178582] transition-colors"
                   >
                     ayush_c@mt.iitr.ac.in
                   </a>
@@ -303,14 +98,14 @@ export const ContactSection = () => {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />
+                <div className="p-3 rounded-full bg-[#178582]/20">
+                  <Phone className="h-6 w-6 text-[#178582]" />
                 </div>
                 <div>
                   <h4 className="font-medium">Phone</h4>
                   <a
                     href="tel:7800388590"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-[#C6A86B]/70 hover:text-[#178582] transition-colors"
                   >
                     7800388590
                   </a>
@@ -318,118 +113,79 @@ export const ContactSection = () => {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />
+                <div className="p-3 rounded-full bg-[#178582]/20">
+                  <MapPin className="h-6 w-6 text-[#178582]" />
                 </div>
                 <div>
                   <h4 className="font-medium">Location</h4>
-                  <p className="text-muted-foreground">
+                  <p className="text-[#C6A86B]/70">
                     Roorkee, Uttarakhand
                   </p>
                 </div>
               </div>
+
             </div>
 
+            {/* Social Icons */}
             <div className="pt-8">
               <h4 className="font-medium mb-4">Connect With Me</h4>
               <div className="flex space-x-4">
-                <div className="flex space-x-4">
 
-                  {/* LinkedIn */}
+                {[Linkedin, Twitter, Instagram].map((Icon, i) => (
                   <a
-                    href="https://www.linkedin.com/in/ayushrsm45/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    className="group p-3 rounded-full bg-primary/10 transition-all duration-300 hover:bg-primary hover:scale-110 hover:shadow-lg hover:shadow-primary/30"
+                    key={i}
+                    href="#"
+                    className="group p-3 rounded-full bg-[#178582]/20 transition-all duration-300 hover:bg-[#178582] hover:scale-110 hover:shadow-lg hover:shadow-[#178582]/40"
                   >
-                    <Linkedin className="h-5 w-5 text-primary transition-colors duration-300 group-hover:text-background" />
+                    <Icon className="h-5 w-5 text-[#178582] group-hover:text-[#001F33]" />
                   </a>
-
-                  {/* Twitter */}
-                  <a
-                    href="https://x.com/Nagraj_Ayush"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Twitter"
-                    className="group p-3 rounded-full bg-primary/10 transition-all duration-300 hover:bg-primary hover:scale-110 hover:shadow-lg hover:shadow-primary/30"
-                  >
-                    <Twitter className="h-5 w-5 text-primary transition-colors duration-300 group-hover:text-background" />
-                  </a>
-
-                  {/* Instagram */}
-                  <a
-                    href="https://www.instagram.com/ayush_rsm/?hl=en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                    className="group p-3 rounded-full bg-primary/10 transition-all duration-300 hover:bg-primary hover:scale-110 hover:shadow-lg hover:shadow-primary/30"
-                  >
-                    <Instagram className="h-5 w-5 text-primary transition-colors duration-300 group-hover:text-background" />
-                  </a>
-
-                </div>
+                ))}
 
               </div>
             </div>
+
           </div>
 
-          {/* RIGHT SIDE */}
-          <div className="bg-card p-8 rounded-lg shadow-xs">
-            <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
+          {/* RIGHT SIDE FORM */}
+          <div className="bg-[#07293F]/80 backdrop-blur-md border border-white/5 p-8 rounded-lg shadow-xl">
 
-            {/* ✅ FIXED: onSubmit moved here */}
+            <h3 className="text-2xl font-semibold mb-6">
+              Send a Message
+            </h3>
+
             <form className="space-y-6" onSubmit={handleSubmit}>
 
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="Your name"
-                />
-              </div>
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="Your name"
+                className="w-full px-4 py-3 rounded-md border border-[#178582]/30 bg-[#001F33]/60 focus:outline-none focus:ring-2 focus:ring-[#178582]"
+              />
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="your@email.com"
-                />
-              </div>
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="your@email.com"
+                className="w-full px-4 py-3 rounded-md border border-[#178582]/30 bg-[#001F33]/60 focus:outline-none focus:ring-2 focus:ring-[#178582]"
+              />
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows="4"
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-                  placeholder="Hello, I'd like to talk about..."
-                />
-              </div>
+              <textarea
+                name="message"
+                required
+                rows="4"
+                placeholder="Hello, I'd like to talk about..."
+                className="w-full px-4 py-3 rounded-md border border-[#178582]/30 bg-[#001F33]/60 focus:outline-none focus:ring-2 focus:ring-[#178582] resize-none"
+              />
 
               <button
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "w-full inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-primary text-primary-foreground font-medium shadow-md transition-all duration-300",
-                  "hover:shadow-lg hover:scale-[1.02]",
-                  "disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  "w-full inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-[#178582] text-[#001F33] font-medium shadow-md transition-all duration-300",
+                  "hover:shadow-xl hover:scale-[1.02]",
+                  "disabled:opacity-60 disabled:cursor-not-allowed"
                 )}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
@@ -437,6 +193,7 @@ export const ContactSection = () => {
               </button>
 
             </form>
+
           </div>
 
         </div>
